@@ -1,0 +1,67 @@
+# Japan TB Screening Check (JPETS)
+
+> Free, unofficial checker for Japan Pre-Entry Tuberculosis Screening (JPETS, 入国前結核スクリーニング): does a national of the Philippines, Nepal, Viet Nam, Indonesia, Myanmar or China need a TB Clearance Certificate from a designated Panel Clinic for a Japan Certificate of Eligibility (COE) or visa? Rules as of 2026-10-15. Educational guide, not immigration, legal or medical advice.
+
+Site: https://japan-tb-screening.vercel.app
+
+## Key facts (official sources below)
+- Covered: nationals of the 6 target countries entering as mid- to long-term residents (stay over 3 months; not Temporary Visitor, Diplomat, Official), excluding re-entry permit holders, plus Designated Activities No. 53 (Digital Nomad) and No. 54 (family).
+- Dates (Panel Clinics open → certificate mandatory for applications FILED from): Philippines and Nepal 2025-03-24 → 2025-06-23; Viet Nam 2025-05-26 → 2025-09-01; Indonesia 2026-11-02 → 2027-01-04 (scheduled); Myanmar and China not announced.
+- Temporarily exempt: Specified Skilled Workers (特定技能), EPA nurses / care workers, JET, JICA trainees, JDS, Japan Foundation invitees, embassy-recommended MEXT scholars, commissioned student training, Designated Activities No. 55, special-zone housekeepers. Technical intern trainees and students are NOT exempt.
+- Also exempt: residence outside the 6 countries confirmed by a residence permit (submit copy + ISA explanation form).
+- Submit with the COE application (or the visa application if no COE). A COE filed before the mandatory date and issued without a certificate needs none at the visa stage.
+- Valid 180 days from the chest X-ray (90 after close contact); must be valid at COE filing only, not at visa or landing.
+- Only designated Panel Clinic certificates count; applicant pays; price varies. 42 clinics listed (PH 6, NP 9, VN 17, ID 10 as of 2026-10-09).
+
+## API (free, no key, CORS open)
+
+### GET
+GET https://japan-tb-screening.vercel.app/api/check?nationality=indonesia&status=student&applicationDate=2027-01-15
+→ verdict "required", submitWith "coe_application", certificate.xrayWindowForApplicationDate {earliest 2026-11-02, latest 2027-01-15}, panelClinics (10 in Indonesia)
+
+GET https://japan-tb-screening.vercel.app/api/check?nationality=indonesia&status=specified_skilled_worker&applicationDate=2027-01-15
+→ verdict "exempt" (temporarily exempt status)
+
+Params: nationality (required: philippines | nepal | vietnam | indonesia | myanmar | china | any other); status (student, technical_intern_training, employment_for_skill_development, engineer_humanities, skilled_labor, nursing_care, dependent, spouse_of_japanese, long_term_resident, digital_nomad, specified_skilled_worker, jet_programme, temporary_visitor, ... see /api/rules); applicationDate (YYYY-MM-DD, default today JST); residenceCountry (other country or "japan"); route (coe | visa_direct); xrayDate; stayMonths; hasReentryPermit; closeContact; city (Panel Clinic filter).
+
+### POST
+POST https://japan-tb-screening.vercel.app/api/check
+Content-Type: application/json
+```json
+{"nationality": "VN", "status": "gijinkoku", "applicationDate": "2026-11-01", "xrayDate": "2026-10-01", "city": "Da Nang"}
+```
+→ verdict "required", certificate.validOnApplicationDate true, 2 Panel Clinics in Da Nang
+
+### All rules + Panel Clinics
+GET https://japan-tb-screening.vercel.app/api/rules
+
+### Discovery
+- OpenAPI 3.1: https://japan-tb-screening.vercel.app/openapi.json
+- Plugin manifest: https://japan-tb-screening.vercel.app/.well-known/ai-plugin.json
+- MCP tool `japan_tb_screening_check` on https://free-agent-tools.vercel.app/mcp
+
+## Shareable result links
+- https://japan-tb-screening.vercel.app/r?n=indonesia&s=student&d=2027-01-15
+- https://japan-tb-screening.vercel.app/r?n=indonesia&s=specified_skilled_worker&d=2027-01-15
+- Preview image: https://japan-tb-screening.vercel.app/og?n=indonesia&s=student&d=2027-01-15
+
+## Sources
+- https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou03/english.html (MHLW JPETS page)
+- https://www.mhlw.go.jp/content/001469441.pdf (Guideline, revised 2026-09-25)
+- https://www.mhlw.go.jp/content/001469448.pdf (JPETS Q&A)
+- https://www.moj.go.jp/isa/10_00219.html (Immigration Services Agency JPETS page, documents)
+- https://jpets.mhlw.go.jp/ (JPETS site)
+- https://www.jpets.mhlw.go.jp/doc/260925.pdf (Indonesia launch notice)
+- https://www.mhlw.go.jp/content/001471856.pdf (Designated Panel Clinics)
+
+## Disclaimer
+Educational guide, not immigration, legal or medical advice. ISA, the Japanese embassy or consulate, and the Panel Clinic decide; scheduled dates and exemptions can change. Not affiliated with MHLW, ISA, MOFA or any clinic.
+
+## Other free tools by the same maker
+- Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
+- Japan Customs Allowance Checker: https://japan-customs-allowance.vercel.app
+- Japan Tax-Free Refund Checker: https://japan-tax-free-refund.vercel.app
+- Japan Luggage Check: https://japan-luggage.vercel.app
+- Kyushu Travel Discount Calculator: https://kyushu-travel-discount.vercel.app
+- Japan Trip Brain: https://japan-trip-brain.vercel.app
+- Free Agent Tools MCP: https://free-agent-tools.vercel.app
