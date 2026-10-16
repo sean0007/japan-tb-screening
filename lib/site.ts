@@ -14,6 +14,7 @@ export const SIBLING_TOOLS = [
   { href: "https://japan-tax-free-refund.vercel.app", label: "Japan Tax-Free Refund" },
   { href: "https://japan-luggage.vercel.app", label: "Japan Luggage Check" },
   { href: "https://kyushu-travel-discount.vercel.app", label: "Kyushu Travel Discount" },
+  { href: "https://japan-dual-pricing.vercel.app", label: "Japan Dual Pricing" },
   { href: "https://japan-trip-brain.vercel.app", label: "Japan Trip Brain" },
   { href: "https://free-agent-tools.vercel.app", label: "Free Agent Tools MCP" },
 ] as const;
