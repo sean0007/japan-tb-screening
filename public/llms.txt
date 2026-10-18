@@ -65,5 +65,6 @@ Educational guide, not immigration, legal or medical advice. ISA, the Japanese e
 - Kyushu Travel Discount Calculator: https://kyushu-travel-discount.vercel.app
 - Japan Dual Pricing Check: https://japan-dual-pricing.vercel.app
 - Japan Alert Decoder: https://japan-alert-decoder.vercel.app
+- Japan PR Guideline Check (permanent residence guideline revised 2026-10-01): https://japan-pr-check.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Free Agent Tools MCP: https://free-agent-tools.vercel.app
