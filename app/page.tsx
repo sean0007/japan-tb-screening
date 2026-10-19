@@ -5,9 +5,9 @@ import { CLINICS } from "@/lib/clinics";
 import { COUNTRIES, SOURCES, STATUSES } from "@/lib/jpets";
 import { PUBLIC_URL, fmtDate } from "@/lib/share";
 
-const title = "JPETS checker: do I need a TB clearance certificate for Japan? (Indonesia from Jan 4, 2027)";
+const title = "TB screening certificate for Japan visa: JPETS checker 2026";
 const description =
-  "Free Japan Pre-Entry TB Screening (JPETS) checker: Philippines, Nepal and Viet Nam nationals need a TB Clearance Certificate from a Panel Clinic for a Japan COE or visa (stays over 3 months); Indonesia from January 4, 2027 (screening from November 2, 2026). Exemptions (specified skilled workers), 180-day validity, Panel Clinic list, free JSON API for AI agents. Not legal or medical advice.";
+  "Free TB screening certificate checker for a Japan visa (JPETS, Japan Pre-Entry TB Screening): Philippines, Nepal and Viet Nam nationals need a TB Clearance Certificate from a Panel Clinic for a Japan COE or visa (stays over 3 months); Indonesia from January 4, 2027 (screening from November 2, 2026). Exemptions (specified skilled workers), 180-day validity, Panel Clinic list, free JSON API for AI agents. Not legal or medical advice.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -36,6 +36,10 @@ const webAppLd = {
 };
 
 const faq: FaqItem[] = [
+  {
+    q: "Is there a tool to check if I need a TB screening certificate for a Japan visa?",
+    a: "Yes, this one: a free, unofficial Japan Pre-Entry TB Screening (JPETS) checker. Pick your nationality, status of residence and COE or visa filing date to see whether a TB Clearance Certificate applies, from which date, the exemptions, the 180-day validity and the designated Panel Clinics. The same check is a free keyless JSON API. Educational guide, not immigration, legal or medical advice: Immigration (ISA), the embassy and the Panel Clinic decide, and scheduled dates can move.",
+  },
   {
     q: "What is JPETS?",
     a: `Japan Pre-Entry Tuberculosis Screening (JPETS, 入国前結核スクリーニング) is a TB check that some foreign nationals must pass before moving to Japan. You get a medical exam and chest X-ray at a Panel Clinic designated by the Japanese government in your country; if you do not have active TB, the clinic issues a TB Clearance Certificate, which you submit with your Certificate of Eligibility (COE) application, or with your visa application if you apply without a COE. It is run by the Ministry of Health, Labour and Welfare with the Immigration Services Agency and the Ministry of Foreign Affairs (${SOURCES[0]}).`,
@@ -108,7 +112,10 @@ export default function HomePage() {
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:py-10">
       <section className="max-w-3xl">
         <p className="font-mono text-[11px] tracking-[0.28em] text-amber uppercase">Free · Japan · JPETS · Indonesia from Jan 4 2027</p>
-        <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">Do I need a TB clearance certificate for Japan?</h1>
+        <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">Do I need a TB screening certificate for a Japan visa?</h1>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
+          Only if you are a national of a JPETS target country moving to Japan as a mid- to long-term resident (a stay over 3 months). Nationals of the Philippines, Nepal and Viet Nam already need a TB Clearance Certificate from a designated Panel Clinic, submitted with the Certificate of Eligibility (COE) application, or with the visa application if there is no COE; Indonesia joins for applications filed from January 4, 2027, and Myanmar and China have no start date yet. Tourists and other stays of 3 months or less are not covered, and some statuses, such as Specified Skilled Workers, are exempt for now. This free checker tells you whether it applies to your nationality, status and filing date, and has a keyless JSON API.
+        </p>
         <p className="mt-4 max-w-2xl text-lg font-medium text-foreground sm:text-xl">Japan Pre-Entry Tuberculosis Screening (JPETS) checker</p>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
           Moving to Japan from the Philippines, Nepal or Viet Nam? You already need a chest X-ray at a Panel Clinic before your COE. Indonesia joins for applications filed from January 4, 2027. Pick your case to see if it applies, when, and where to get screened.
